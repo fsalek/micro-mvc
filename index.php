@@ -44,35 +44,98 @@ spl_autoload_register('autoloadClass');
 
 switch ($_GET['model']) {
     case 'subscriber':
-        # code...
+    switch($_GET['subscriber']) {
+        case 'list':
+            SubscriberController::list();
         break;
+    
+        case 'read':
+            SubscriberController::read( intval( $_GET['id'] ) );
+            break;
+        
+        case 'new':
+            SubscriberController::new($_POST);
+            break;
+        
+        case 'create':
+            SubscriberController::create();
+            break;
+        
+        case 'edit':
+            SubscriberController::edit($_GET['id']);
+            break;
+        
+        case 'update':
+            SubscriberController::update($_POST);
+            break;
+        
+        case 'delete':
+            SubscriberController::delete($_GET['id']);
+            break;
+        case 'todelete':
+            SubscriberController::todelete($_POST);
+        break;   
+
+    }
+
 
     case 'subscriber_book':
-        # code...
+    switch($_GET['method']) {
+
+        case 'list':
+            Subscriber_bookController::list();
+            break;
+        
+        case 'read':
+            Subscriber_bookController::read( intval( $_GET['id'] ) );
+            break;
+        
+        case 'new':
+            Subscriber_bookController::new($_POST);
+            break;
+        
+        case 'create':
+            Subscriber_bookController::create();
+            break;
+        case 'delete':
+            Subscriber_bookController::delete($_GET['id']);
+            break;
+        case 'todelete':
+            Subscriber_bookController::todelete($_POST);
+        break; 
+        }
         break;
 
     case 'book':
-            switch($_GET['method']) {
+        switch($_GET['method']) {
 
-                case 'list':
-                    BookController::list();
-                    break;
+        case 'list':
+            BookController::list();
+            break;
 
-                case 'read':
-                    BookController::read( intval( $_GET['id'] ) );
-                    break;
+        case 'read':
+            BookController::read( intval( $_GET['id'] ) );
+            break;
 
-                case 'new':
-                    BookController::new($_POST);
-                    break;
+        case 'new':
+            BookController::new($_POST);
+            break;
 
-                case 'edit':
-                    BookController::edit($_GET['id']);
-                    break;
+        case 'create':
+            BookController::create();
+            break;
 
-                case 'delete':
-                    BookController::delete($_GET['id']);
-                    break;
+        case 'edit':
+            BookController::edit($_GET['id']);
+            break;
+
+        case 'update':
+            BookController::update($_POST);
+            break;
+
+        case 'delete':
+                BookController::delete($_GET['id']);
+                break;
             }
         break;
 

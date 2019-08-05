@@ -1,13 +1,13 @@
 <?php
 
-class Book extends AbstractDb {
+class Subscriber extends AbstractDb {
 
     public static function findAll() {
 
         $bdd = self::connectDb();
 
         // 2. request
-        $request = 'SELECT * FROM book';
+        $request = 'SELECT * FROM subscriber';
 
         // 3. execution de la request
         $response = $bdd->query($request);
@@ -20,7 +20,7 @@ class Book extends AbstractDb {
 
         $bdd = self::connectDb();
 
-        $request = 'SELECT * FROM book WHERE id = ' . $id;
+        $request = 'SELECT * FROM subscriber WHERE id = ' . $id;
 
         $response = $bdd->query($request);
 
@@ -31,29 +31,29 @@ class Book extends AbstractDb {
 
         $bdd = self::connectDb();
         
-        $request =$bdd->prepare( 'INSERT INTO book (title,author) VALUES (:title,:author)');
+        $request =$bdd->prepare( 'INSERT INTO subscriber (first_name,last_name) VALUES (:first_name,:last_name)');
         $request->execute(array(
-            'title'=>$params['title'],
-            'author'=>$params['author']
+            'first_name'=>$params['first_name'],
+            'last_name'=>$params['last_name']
         ));
-        echo 'Le livre est ajouté :GOOD!';
+        echo 'L\'emprinteur est ajouté :GOOD!';
     }
     public static function update($params) {
 
         $bdd = self::connectDb();
         
-        $request =$bdd->prepare( 'UPDATE book (title,author) VALUES (:title,:author)');
+        $request =$bdd->prepare( 'UPDATE subscriber (first_name,last_name) VALUES (:first_name,:last_name)');
         $request->execute(array(
-            'title'=>$params['title'],
-            'author'=>$params['author']
+            'first_name'=>$params['first_name'],
+            'last_name'=>$params['last_name']
         ));
-        echo 'Le livre est modifié :GOOD!';
+        echo 'L\'emprinteur est modifié :GOOD!';
     }
     public static function todelete($id) {
 
         $bdd = self::connectDb();
 
-        $request = 'DELETE FROM book WHERE id ="{$id}" LIMIT 1';
+        $request = 'DELETE FROM subsciber WHERE id ="{$id}" LIMIT 1';
 
         $response = $bdd->query($request);
     }
